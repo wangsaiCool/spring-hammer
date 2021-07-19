@@ -1,7 +1,7 @@
-package cn.wsai.hammer.spring.hammer;
+package cn.wing.kid.hottr.hammer;
 
-import cn.wsai.hammer.spring.config.RootConfig;
-import cn.wsai.hammer.spring.config.WebConfig;
+import cn.wing.kid.hottr.config.RootConfig;
+import cn.wing.kid.hottr.config.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**

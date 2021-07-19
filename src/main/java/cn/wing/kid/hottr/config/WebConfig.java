@@ -1,4 +1,4 @@
-package cn.wsai.hammer.spring.config;
+package cn.wing.kid.hottr.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,17 +13,19 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * Created by WangSai on 2021/7/19
  */
 @Configuration
-@EnableWebMvc //用于启用SpringMVC
-@ComponentScan() //启用组件扫描
+@EnableWebMvc //启用SpringMVC
+@ComponentScan("cn.wing.kid.hottr.controller") //启用组件扫描
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     /**
-     * 它会查找JSP文件，在查找的时候， 它会在视图名称上加一个特定的前缀和后缀（例如，名为home的视图将 会解析为/WEB-INF/views/home.jsp）
+     * 它会查找JSP文件.
+     * 在查找的时候, 它会在视图名称上加一个特定的前缀和后缀（例如,名为home的视图将 会解析为/WEB-INF/views/home.jsp）
      *
      * @return
      */
     @Bean
     public ViewResolver viewResolver() {
+        // JSP视图解析器
         InternalResourceViewResolver resolver =
                 new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
