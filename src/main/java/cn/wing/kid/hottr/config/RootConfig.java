@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @Configuration
 @ComponentScan(
-        basePackages = {"cn.wing.kid.hottr"},
+        basePackages = {"cn.wing.kid.hottr.controller"},
         excludeFilters = {@ComponentScan.Filter(
                 type = FilterType.ANNOTATION,
                 value = EnableWebMvc.class)})
