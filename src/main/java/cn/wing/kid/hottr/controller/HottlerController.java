@@ -19,7 +19,7 @@ public class HottlerController {
      * 中的配置，这个逻辑视图会导向到"/WEB-INF/views/registerForm.jsp"该界面。
      */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String showRegister() {
+    public String showRegistrationForm() {
         return "registerForm";
     }
 }

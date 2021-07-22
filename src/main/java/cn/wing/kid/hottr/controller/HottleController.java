@@ -48,7 +48,7 @@ public class HottleController {
      * <p>
      * 不管你选择哪种方式来编写spittles()方法，所达成的结果都是相同 的。模型中会存储一个Spittle列表，key为spittleList，
      * 然后这个 列表会发送到名为spittles的视图中。按照我们配 置InternalResourceViewResolver的方式，视图的JSP将会是
-     * “/WEB- INF/views/spittles.jsp”。
+     * “/WEB- INF/views/hottles.jsp”。
      *
      * @return
      */
