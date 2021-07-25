@@ -1,6 +1,6 @@
 package cn.wing.kid.hottr.controller;
 
-import cn.wing.kid.hottr.data.Hottle;
+import cn.wing.kid.hottr.model.Hottle;
 import cn.wing.kid.hottr.data.HottleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +19,14 @@ import java.util.List;
 @RequestMapping("/hottles")
 public class HottleController {
 
-    private HottleRepository hottleRepository;
+    private final HottleRepository hottleRepository;
 
     @Autowired
     public HottleController(HottleRepository hottleRepository) {
         this.hottleRepository = hottleRepository;
     }
-//
+
+
 //    /**
 //     * 我们在hottles()方法中给定了一个Model作为参数。这样，hottles()方法就能将Repository中获取到的Hottle列表填充到模型中。
 //     * Model实际上就是一个Map（也就是key-value对的集合），它会传递给视图，这样数据就能渲染到客户端了。当调用addAttribute()方法，
@@ -41,21 +42,23 @@ public class HottleController {
 
     /**
      * 处理查询参数.(比如 "/hottles?max=238900&count=50")
-     * <p>
+     *
      * 这个版本与上面的版本有些差别。它并没有返回视图名称，也没有显式地设定模型，这个方法返回的是Hottle列表。当处理器方法像
      * 这样返回对象或集合时，这个值会放到模型中，模型的key会根据其类型推断得出（在本例中，也就是hottleList）。而逻辑视图的
      * 名称将会根据请求路径推断得出。因为这个方法处理针 对“/hottles”的GET请求，因此视图的名称将会是hottles（去掉开头的斜线）。
-     * <p>
-     * 不管你选择哪种方式来编写spittles()方法，所达成的结果都是相同 的。模型中会存储一个Spittle列表，key为spittleList，
-     * 然后这个 列表会发送到名为spittles的视图中。按照我们配 置InternalResourceViewResolver的方式，视图的JSP将会是
-     * “/WEB- INF/views/hottles.jsp”。
+     *
+     * 不管你选择哪种方式来编写hottles()方法，所达成的结果都是相同 的。模型中会存储一个Hottle列表，key为spittleList，
+     * 然后这个列表会发送到名为hottles的视图中。按照我们配置InternalResourceViewResolver的方式，视图的JSP将会是
+     * “/views/hottles.jsp”。
+     *
+     * 实际上，当视图是JSP的时候，模型数据会作为请求属性放到请求（request）之 中。
      *
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
     public List<Hottle> hottles(
             // 如果max参数没有指定，那么就会使用默认的设置。由于查询参数是String类型的，因此defaultValue属性值也需要设置为String类型
-            // defaultValue的属性为String类型，当运行到函数时，将会根据函数的参数类型进行转换
+            // 当运行到函数时，将会根据函数的参数类型进行转换.
             @RequestParam(value = "max", defaultValue = Long.MAX_VALUE + "") long max,
             @RequestParam(value = "count", defaultValue = "20") int count) {
         return hottleRepository.findHottles(max, count);
@@ -69,8 +72,8 @@ public class HottleController {
      *
      * @return
      */
-    @RequestMapping(value = "/show/{hottleId}", method = RequestMethod.GET)
-    public String hottles(@PathVariable long hottleId, Model model) {
+    @RequestMapping(value = "/{hottleId}", method = RequestMethod.GET)
+    public String showHottles(@PathVariable long hottleId, Model model) {
         model.addAttribute("hottle", hottleRepository.findOne(hottleId));
         return "hottle";
     }

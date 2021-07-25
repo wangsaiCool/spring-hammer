@@ -11,7 +11,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
  */
 public class HomeControllerTest {
 
-
     @Test
     public void testHomePage() throws Exception {
         HomeController homeController = new HomeController();

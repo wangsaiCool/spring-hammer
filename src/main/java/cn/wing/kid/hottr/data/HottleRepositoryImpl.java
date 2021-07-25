@@ -1,5 +1,6 @@
 package cn.wing.kid.hottr.data;
 
+import cn.wing.kid.hottr.model.Hottle;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

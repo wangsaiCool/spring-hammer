@@ -10,6 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
+ * 创建SpringMVC的配置.
+ *
  * Created by WangSai on 2021/7/19
  */
 @Configuration
@@ -19,7 +21,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     /**
      * 它会查找JSP文件.
-     * 在查找的时候, 它会在视图名称上加一个特定的前缀和后缀（例如,名为home的视图将 会解析为/WEB-INF/views/homepage.jsp）
+     * 在查找的时候, 它会在视图名称上加一个特定的前缀和后缀（例如,名为home的视图将 会解析为/WEB-INF/views/home.jsp）
      *
      * @return
      */
@@ -28,7 +30,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         // JSP视图解析器
         InternalResourceViewResolver resolver =
                 new InternalResourceViewResolver();
-        resolver.setPrefix("/webapp/views/");
+        resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         resolver.setExposeContextBeansAsAttributes(true);
         return resolver;

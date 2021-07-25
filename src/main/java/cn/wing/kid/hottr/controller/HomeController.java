@@ -9,7 +9,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  * Created by WangSai on 2021/7/19
  */
 @Controller // 声明为一个控制器
-@RequestMapping({"/homepage", "/homepage2"}) // 将控制器映射到"/homepage"
+@RequestMapping({"/homepage"}) // 类级别的请求处理，将控制器映射到"/"
 public class HomeController {
 
     @RequestMapping(method = GET) // value属性指明，处理对"/"的get请求

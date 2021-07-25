@@ -1,6 +1,6 @@
 package cn.wing.kid.hottr.controller;
 
-import cn.wing.kid.hottr.data.Hottle;
+import cn.wing.kid.hottr.model.Hottle;
 import cn.wing.kid.hottr.data.HottleRepository;
 import org.hamcrest.core.IsCollectionContaining;
 import org.junit.Test;
@@ -28,14 +28,14 @@ public class HottleControllerTest {
      */
     @Test
     public void testHottle() throws Exception {
-        Hottle oneHottle = new Hottle("Test1", new Date());
+        Hottle oneHottle = new Hottle("Test2", new Date());
         HottleRepository hottleRepository = Mockito.mock(HottleRepository.class);
         Mockito.when(hottleRepository.findOne(12345)).thenReturn(oneHottle);
 
         HottleController hottleController = new HottleController(hottleRepository);
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(hottleController).build();
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/hottles/show/12345"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/hottles/12345"))
                 .andExpect(MockMvcResultMatchers.view().name("hottle"))
                 .andExpect(MockMvcResultMatchers.model().attributeExists("hottle"))
                 .andExpect(MockMvcResultMatchers.model().attribute("hottle", oneHottle));
@@ -54,7 +54,7 @@ public class HottleControllerTest {
 
         HottleController controller = new HottleController(mockRepository);
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller)
-                .setSingleView(new InternalResourceView("/WEB_INF/views/hottles.jsp")).build();
+                .setSingleView(new InternalResourceView("/views/hottles.jsp")).build();
 
         // 调用MockMvc.perform(RequestBuilder requestBuilder)发起一个http请求，然后将得到ResultActions
         mockMvc.perform(MockMvcRequestBuilders.get("/hottles?max=238900&count=50"))// 添加验证断言来判断执行请求后的结果是否是预期的；
@@ -75,7 +75,7 @@ public class HottleControllerTest {
         HottleController controller = new HottleController(mockRepository);
 
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller)
-                .setSingleView(new InternalResourceView("/WEB_INF/views/spittles.jsp")).build();
+                .setSingleView(new InternalResourceView("/views/hottles.jsp")).build();
 
         // 调用MockMvc.perform(RequestBuilder requestBuilder)发起一个http请求，然后将得到ResultActions
         mockMvc.perform(MockMvcRequestBuilders.get("/hottles"))// 添加验证断言来判断执行请求后的结果是否是预期的；
@@ -91,7 +91,7 @@ public class HottleControllerTest {
     private List<Hottle> createHottlesList(int count) {
         List<Hottle> hottles = new ArrayList<Hottle>();
         for (int i = 0; i < count; i++) {
-            hottles.add(new Hottle("Spittle " + i, new Date()));
+            hottles.add(new Hottle("Spittle_" + i, new Date()));
         }
         return hottles;
     }

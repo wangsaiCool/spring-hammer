@@ -67,6 +67,15 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- to fix: <无法在web.xml或使用此应用程序部署的jar文件中解析绝对uri：[http://java.sun.com/jsp/jstl/core]  -->
+        <!-- resolve, ref: https://www.cnblogs.com/116970u/p/10884760.html -->
+        <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>

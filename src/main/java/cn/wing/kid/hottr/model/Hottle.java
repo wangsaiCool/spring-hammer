@@ -1,4 +1,4 @@
-package cn.wing.kid.hottr.data;
+package cn.wing.kid.hottr.model;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -16,11 +16,11 @@ public class Hottle {
     private Double longitude;
 
     public Hottle(String message, Date time) {
-        this(message, time, null, null);
+        this(null, message, time, null, null);
     }
 
-    public Hottle(String message, Date time, Double longitude, Double latitude) {
-        this.id = null;
+    public Hottle(Long id, String message, Date time, Double longitude, Double latitude) {
+        this.id = id;
         this.message = message;
         this.time = time;
         this.longitude = longitude;
@@ -56,4 +56,5 @@ public class Hottle {
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this, "id", "time");
     }
+
 }
