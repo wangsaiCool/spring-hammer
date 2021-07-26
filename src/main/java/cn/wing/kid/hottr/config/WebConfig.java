@@ -27,7 +27,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
      */
     @Bean
     public ViewResolver viewResolver() {
-        // JSP视图解析器
+        // JSP视图解析器, 他会遵循一种约定，会在视图名上添加前缀和后缀，进而确定一个Web应用中视图资源的物理路径
         InternalResourceViewResolver resolver =
                 new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views/");
