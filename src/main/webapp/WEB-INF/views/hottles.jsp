@@ -4,12 +4,12 @@
 
 <html>
   <head>
-    <title>Spitter</title>
+    <title>Hotter</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css" />" >
   </head>
   <body>
     <div class="hottleForm">
-      <h1>Spit it out...</h1>
+      <h1>Hot it out...</h1>
       <form method="POST" name="hottleForm">
         <input type="hidden" name="latitude">
         <input type="hidden" name="longitude">

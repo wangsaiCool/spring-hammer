@@ -1,6 +1,6 @@
 # 项目简介
 《Spring实战-第四版》的书，书中spitter项目的实现。与原书不同的地方是，本项目的领域类做了调整：    
-1) spttr-> hottr  
+1) spittr-> hottr  
 2) spitter -> hotter  
 3) spittle -> hottle  
 
